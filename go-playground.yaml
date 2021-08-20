@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+
+metadata:
+  name: go-playground
+
+spec:
+  containers:
+  - name: go-playground
+    image: golang:1.16
+  nodeSelector:
+    cloud.google.com/gke-nodepool: go-playground
+  tolerations:
+  - key: "node-pool"
+    operator: "Equal"
+    value: "go-playground"
+    effect: "NoSchedule"
